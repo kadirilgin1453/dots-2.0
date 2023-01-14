@@ -20,7 +20,7 @@ ranges = [
 ]
 
 def is_cjk(char):
-  return any([range["from"] <= ord(char) <= range["to"] for range in ranges])
+  return any(range["from"] <= ord(char) <= range["to"] for range in ranges)
 
 def cjk_substrings(string):
   i = 0
@@ -35,9 +35,9 @@ def cjk_substrings(string):
     i += 1
 
 ogstring = str(sys.argv[1])
-string = ogstring[0:20]
+string = ogstring[:20]
 if len(ogstring) > len(string):
-  string = string + "…"
+  string = f"{string}…"
 for sub in cjk_substrings(string):
   string = string.replace(sub, "<span font-family= \"M PLUS 1\" font-size=\"x-small\" rise=\"3pt\" font-weight=\"bold\">" + sub + "</span>")
 print(string)
